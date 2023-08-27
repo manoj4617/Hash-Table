@@ -1,2 +1,4 @@
 # Hash-Table
-My first project!!! For hacks-for-hackers.
+My first project!!! 
+Major League Hacking's hacks-for-hackers.
+
