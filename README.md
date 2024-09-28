@@ -1,4 +1,4 @@
 # Hash-Table
-My first project!!! 
-Major League Hacking's hacks-for-hackers.
+Learning about hash tables and hashing through project building!!!
+
 
