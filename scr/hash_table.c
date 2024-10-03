@@ -15,7 +15,7 @@ static ht_item HT_DELETED_ITEM = {NULL, NULL}; //we create an item marked as del
 //ITEM CREATION
 static ht_item* ht_new_item(const char* k, const char* v) 
 {
-    ht_item* i = malloc(sizeof(ht_item));
+    ht_item* i = xmalloc(sizeof(ht_item));
     i->key = strdup(k);
     i->value = strdup(v);
     return i;
@@ -79,7 +79,7 @@ static void ht_resize(ht_hash_table* ht, const int base_size)
             ht_insert(new_ht, item->key, item->value);
         }
     }
-
+    //SWAPPING OF ATTRIBUTES
     ht->base_size = new_ht->base_size;
     ht->count = new_ht->count;
 
@@ -152,7 +152,7 @@ void ht_insert(ht_hash_table* ht, const char* key, const char* value)
                 ht->items[index] = item;
                 return;
         }
-        index = ht_get_hash(item->key, ht->size, i);
+        index = ht_get_hash(item->key, ht->size, i); //to handle collision by finding new index with help of attempts made(i)
         cur_item = ht->items[index];
         i++;
     } 
@@ -204,13 +204,15 @@ void ht_delete(ht_hash_table* ht, const char* key)
             {
                 ht_del_item(item);
                 ht->items[index] = &HT_DELETED_ITEM;
+                ht->count--;
+                printf("Item Deleted!!!\n");
+                return;
             }
         }
         index = ht_get_hash(key, ht->size, i);
         item = ht->items[index];
         i++;
     } 
-    printf("Item Deleted!!!\n");
-    ht->count--;
+    printf("Item is not in the table!!!\n");
 }
 
