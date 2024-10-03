@@ -215,4 +215,3 @@ void ht_delete(ht_hash_table* ht, const char* key)
     } 
     printf("Item is not in the table!!!\n");
 }
-
