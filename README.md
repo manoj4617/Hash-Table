@@ -20,14 +20,17 @@
 - "main.c" : Provides a CLI interface for users to interact with the hash table and perform operations.
 - "prime.c" : Includes helper functions to find the next prime number for resizing the hash table efficiently.
 
-### Compilation and Usage
-1. Compile the Project
-- To compile the project, you can use the following command in the terminal:
-  - gcc -o hash_table main.c
-2. Run the Hash Table CLI
-- After compiling, run the executable to start the hash table program:
-  - ./hash_table
+### Compilation and Usage (with CMake)
 
+1. **Configure and Build the Project**
+
+- To build the project using CMake, first generate build files:
+
+  ```bash
+  cmake -B build -DCMAKE_BUILD_TYPE=Debug/Release
+  cmake --build build
+  cd build
+  ./main
 ### CLI Options
 - Upon running the program, the following options are available:
 

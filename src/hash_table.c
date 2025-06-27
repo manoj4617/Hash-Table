@@ -4,13 +4,33 @@
 #include <math.h>
 
 #include "hash_table.h"
-#include "prime.c"
+#include "prime.h"
 
 const int HT_PRIME_1=151;
 const int HT_PRIME_2=163;
 const int HT_INITIAL_BASE_SIZE=53;
 
 static ht_item HT_DELETED_ITEM = {NULL, NULL}; //we create an item marked as delete for all the deleted items
+
+// Custom implementation of xmalloc
+void* xmalloc(size_t size) {
+    void* ptr = malloc(size);
+    if (ptr == NULL) {
+        fprintf(stderr, "Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+    return ptr;
+}
+
+// Custom implementation of xcalloc
+void* xcalloc(size_t num, size_t size) {
+    void* ptr = calloc(num, size);
+    if (ptr == NULL) {
+        fprintf(stderr, "Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+    return ptr;
+}
 
 //ITEM CREATION
 static ht_item* ht_new_item(const char* k, const char* v) 
