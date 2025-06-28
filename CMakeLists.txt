@@ -29,4 +29,10 @@ add_executable(main
     src/main.c
 )
 
+add_executable(multi_threaded_main
+    src/multi_threaded_main.c
+)
+
+target_link_libraries(multi_threaded_main hashtable prime)
 target_link_libraries(main hashtable prime)
+
