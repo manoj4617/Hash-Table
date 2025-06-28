@@ -2,6 +2,11 @@
 #include<stdlib.h>
 #include "hash_table.h"
 
+void error_out(){
+    fprintf(stderr, "Failed to read value\n");
+    exit(1);
+}
+
 int main()
 {   
     printf("______________________________________________________________________________________________________________\n");
@@ -15,23 +20,30 @@ int main()
     do{
         printf("_______________________________________________________________________________________\n");
         printf("1.INSERT\n2.SEARCH\n3.DELETE\n4.COUNT\n5.Current Size\n0.EXIT\nEnter your choice: ");
-        scanf("%d",&a);
-
+        if(scanf("%d",&a) != 1){
+                error_out();
+        }
         switch(a){
             case 0: continue;
                     break;
 
             case 1: 
                     printf("Enter key:");
-                    scanf("%s",k);
+                    if(scanf("%19s",k) != 1){
+                        error_out();
+                    }
                     printf("Enter value:");
-                    scanf("%s",v);
+                    if(scanf("%s",v) != 1){
+                        error_out();
+                    }
                     ht_insert(ht,k,v);
                     break;
 
             case 2: 
                     printf("Enter key:");
-                    scanf("%s",k);
+                    if(scanf("%19s",k) != 1){
+                        error_out();
+                    }
                     v=ht_search(ht,k);
                     if(v){
                         printf("\nValue : %s\n",v);
@@ -42,7 +54,9 @@ int main()
 
             case 3: 
                     printf("Enter key:");
-                    scanf("%s",k);
+                    if(scanf("%19s",k) != 1){
+                        error_out();
+                    }
                     ht_delete(ht,k);
                     break;
                 
