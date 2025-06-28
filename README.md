@@ -31,6 +31,10 @@
   cmake --build build
   cd build
   ./main
+- Running the benchmark tests
+   ```bash
+  ./multi_threaded_main  <number of threads> <items each thread manages>
+- Read  [THREADS](./THREADS.md)
 ### CLI Options
 - Upon running the program, the following options are available:
 
